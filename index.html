@@ -1,102 +1,18 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- The <head> section contains metadata about the document -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Table</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: Arial, sans-serif;
-        }
-        /* .heart-container {
-            width: 200px;
-            height: 200px;
-            margin: 20px 0;
-        } */
-        table {
-            border-collapse: collapse;
-            width: 300px;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        input {
-            width: 100%;
-            box-sizing: border-box;
-        }
-    </style>
+    <title>GitHub Pages</title>
 </head>
 <body>
-    <!-- <div class="heart-container">
-        <svg viewBox="0 0 100 100">
-            <path d="M50 90 C25 65 0 50 0 30 C0 0 25 0 50 20 C75 0 100 0 100 30 C100 50 75 65 50 90" fill="red"/>
-            <text x="50" y="50" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">HV</text>
-        </svg>
-    </div> -->
-    <h1>Calc Table</h1>
-    <table id="myTable">
-        <tr>
-            <th>SB</th>
-            <th>HV</th>
-            <th>SB+HV</th>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-            <td><input type="number" placeholder="Enter amount"></td>
-        </tr>
-    </table>
-    <button onclick="addRow()">Add Row</button>
-
-    <script>
-        function addRow() {
-            var table = document.getElementById("myTable");
-            var newRow = table.insertRow(-1);
-            
-            for (var i = 0; i < 3; i++) {
-                var cell = newRow.insertCell(i);
-                var input = document.createElement("input");
-                input.type = i === 1 ? "number" : "text";
-                input.placeholder = i === 0 ? "Enter name" : (i === 1 ? "Enter age" : "Enter city");
-                cell.appendChild(input);
-            }
-        }
-    </script>
+    <!-- The <body> section contains the visible content of the webpage -->
+    <h1>Home</h1>
+    <p>----------</p>
+    
+    <!-- This is a hyperlink to the second page -->
+    <a href="expense-splitter.html">Splitter</a>
 </body>
 </html>
