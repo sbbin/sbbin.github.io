@@ -243,6 +243,45 @@
             netWithTax.textContent = netTotalWithTax.toFixed(2)
         }
 
+        // Function to handle arrow key navigation
+        function handleArrowKeys(event) {
+            const currentCell = event.target;
+            const currentRow = currentCell.parentElement.parentElement;
+            const rowIndex = currentRow.rowIndex;
+            const cellIndex = currentCell.parentElement.cellIndex;
+
+            switch (event.key) {
+                case 'ArrowUp':
+                    if (rowIndex > 1) {
+                        expenseTable.rows[rowIndex - 1].cells[cellIndex].querySelector('input').focus();
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (rowIndex < expenseTable.rows.length - 1) {
+                        expenseTable.rows[rowIndex + 1].cells[cellIndex].querySelector('input').focus();
+                    }
+                    break;
+                case 'ArrowLeft':
+                    if (cellIndex > 0) {
+                        currentRow.cells[cellIndex - 1].querySelector('input').focus();
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (cellIndex < 2) {
+                        currentRow.cells[cellIndex + 1].querySelector('input').focus();
+                    }
+                    break;
+            }
+        }
+
+        // Add event listener to the table
+        expenseTable.addEventListener('keydown', function(event) {
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+                event.preventDefault();
+                handleArrowKeys(event);
+            }
+        });
+
         // Recalculate when tax input changes
         taxInput.addEventListener('input', updateResults);
 
