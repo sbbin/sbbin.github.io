@@ -91,13 +91,6 @@
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
 
-        /* Styles for the net container */
-        .net-container{
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
         /* Styles for the row control buttons */
         .row-controls {
             margin-bottom: 10px;
@@ -158,10 +151,6 @@
                 <p>B with tax: <span id="b-with-tax">0</span></p>
             </div>
         </div>
-        <div class="net-container">
-            <h2>Net</h2>
-            <p>Net with tax: <span id="net-with-tax">0</span></p>
-        </div>
     </div>
 
     <script>
@@ -174,7 +163,6 @@
         const bBeforeTax = document.getElementById('b-before-tax');
         const aWithTax = document.getElementById('a-with-tax');
         const bWithTax = document.getElementById('b-with-tax');
-        const netWithTax = document.getElementById('net-with-tax');
         const addRowButton = document.getElementById('addRow');
         const removeRowButton = document.getElementById('removeRow');
 
@@ -192,8 +180,8 @@
             }
         }
 
-        // Create initial 5 rows
-        for (let i = 0; i < 5; i++) {
+        // Create initial 10 rows
+        for (let i = 0; i < 10; i++) {
             createRow();
         }
 
@@ -232,55 +220,13 @@
             // Calculate final amounts including tax
             let aTotalWithTax = aTotal + (tax * aTotal / (aTotal + bTotal));
             let bTotalWithTax = bTotal + (tax * bTotal / (aTotal + bTotal));
-            let netTotalWithTax = aTotalWithTax + bTotalWithTax
             
             // Update the display with calculated results
             aBeforeTax.textContent = aTotal.toFixed(2);
             bBeforeTax.textContent = bTotal.toFixed(2);
             aWithTax.textContent = aTotalWithTax.toFixed(2);
             bWithTax.textContent = bTotalWithTax.toFixed(2);
-
-            netWithTax.textContent = netTotalWithTax.toFixed(2)
         }
-
-        // Function to handle arrow key navigation
-        function handleArrowKeys(event) {
-            const currentCell = event.target;
-            const currentRow = currentCell.parentElement.parentElement;
-            const rowIndex = currentRow.rowIndex;
-            const cellIndex = currentCell.parentElement.cellIndex;
-
-            switch (event.key) {
-                case 'ArrowUp':
-                    if (rowIndex > 1) {
-                        expenseTable.rows[rowIndex - 1].cells[cellIndex].querySelector('input').focus();
-                    }
-                    break;
-                case 'ArrowDown':
-                    if (rowIndex < expenseTable.rows.length - 1) {
-                        expenseTable.rows[rowIndex + 1].cells[cellIndex].querySelector('input').focus();
-                    }
-                    break;
-                case 'ArrowLeft':
-                    if (cellIndex > 0) {
-                        currentRow.cells[cellIndex - 1].querySelector('input').focus();
-                    }
-                    break;
-                case 'ArrowRight':
-                    if (cellIndex < 2) {
-                        currentRow.cells[cellIndex + 1].querySelector('input').focus();
-                    }
-                    break;
-            }
-        }
-
-        // Add event listener to the table
-        expenseTable.addEventListener('keydown', function(event) {
-            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-                event.preventDefault();
-                handleArrowKeys(event);
-            }
-        });
 
         // Recalculate when tax input changes
         taxInput.addEventListener('input', updateResults);
